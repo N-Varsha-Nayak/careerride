@@ -1,0 +1,245 @@
+/* KodNest Premium Build System - Base Styles & Typography */
+
+/* CSS Reset */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: var(--font-sans);
+  font-size: var(--size-base);
+  line-height: var(--line-height-normal);
+  color: var(--color-text-primary);
+  background-color: var(--color-background);
+  letter-spacing: var(--letter-spacing-normal);
+}
+
+/* Typography */
+
+h1 {
+  font-family: var(--font-serif);
+  font-size: var(--size-6xl);
+  font-weight: 700;
+  line-height: var(--line-height-tight);
+  letter-spacing: var(--letter-spacing-wide);
+  margin-bottom: var(--spacing-md);
+  color: var(--color-text-primary);
+}
+
+h2 {
+  font-family: var(--font-serif);
+  font-size: var(--size-5xl);
+  font-weight: 700;
+  line-height: var(--line-height-tight);
+  letter-spacing: var(--letter-spacing-wide);
+  margin-bottom: var(--spacing-md);
+  color: var(--color-text-primary);
+}
+
+h3 {
+  font-family: var(--font-serif);
+  font-size: var(--size-4xl);
+  font-weight: 700;
+  line-height: var(--line-height-tight);
+  letter-spacing: var(--letter-spacing-wide);
+  margin-bottom: var(--spacing-sm);
+  color: var(--color-text-primary);
+}
+
+h4 {
+  font-family: var(--font-serif);
+  font-size: var(--size-2xl);
+  font-weight: 700;
+  line-height: var(--line-height-tight);
+  margin-bottom: var(--spacing-sm);
+  color: var(--color-text-primary);
+}
+
+h5 {
+  font-family: var(--font-sans);
+  font-size: var(--size-lg);
+  font-weight: 600;
+  line-height: var(--line-height-normal);
+  margin-bottom: var(--spacing-xs);
+  color: var(--color-text-primary);
+}
+
+h6 {
+  font-family: var(--font-sans);
+  font-size: var(--size-base);
+  font-weight: 600;
+  line-height: var(--line-height-normal);
+  margin-bottom: var(--spacing-xs);
+  color: var(--color-text-primary);
+}
+
+p {
+  font-size: var(--size-base);
+  line-height: var(--line-height-relaxed);
+  color: var(--color-text-primary);
+  margin-bottom: var(--spacing-sm);
+}
+
+/* Prose max-width constraint */
+.prose {
+  max-width: var(--layout-text-max-width);
+}
+
+p + p {
+  margin-top: var(--spacing-sm);
+}
+
+/* Links */
+a {
+  color: var(--color-accent);
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+
+a:hover {
+  color: var(--color-accent-light);
+}
+
+a:focus-visible {
+  outline: var(--focus-outline-width) solid var(--focus-outline-color);
+  outline-offset: var(--focus-outline-offset);
+  border-radius: var(--radius-sm);
+}
+
+/* Lists */
+ul,
+ol {
+  margin-left: var(--spacing-md);
+  margin-bottom: var(--spacing-sm);
+}
+
+li {
+  margin-bottom: var(--spacing-xs);
+}
+
+/* Code */
+code {
+  font-family: 'Menlo', 'Monaco', 'Courier New', monospace;
+  font-size: 0.9em;
+  background-color: var(--color-border-light);
+  color: var(--color-text-primary);
+  padding: 2px 6px;
+  border-radius: var(--radius-sm);
+}
+
+pre {
+  background-color: var(--color-border-light);
+  border: var(--border-width-thin) solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: var(--spacing-md);
+  overflow-x: auto;
+  margin-bottom: var(--spacing-sm);
+}
+
+pre code {
+  background-color: transparent;
+  padding: 0;
+  font-size: var(--size-sm);
+  line-height: var(--line-height-normal);
+}
+
+/* Form Elements Base */
+input,
+textarea,
+select {
+  font-family: var(--font-sans);
+  font-size: var(--size-base);
+  color: var(--color-text-primary);
+}
+
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+  outline: var(--focus-outline-width) solid var(--focus-outline-color);
+  outline-offset: var(--focus-outline-offset);
+}
+
+/* Buttons Base */
+button {
+  font-family: var(--font-sans);
+  font-size: var(--size-base);
+  cursor: pointer;
+  border: none;
+  transition: all var(--transition-normal);
+}
+
+button:focus-visible {
+  outline: var(--focus-outline-width) solid var(--focus-outline-color);
+  outline-offset: var(--focus-outline-offset);
+}
+
+/* Headings with generous spacing */
+h1,
+h2,
+h3 {
+  margin-top: var(--spacing-lg);
+}
+
+h1:first-child,
+h2:first-child,
+h3:first-child {
+  margin-top: 0;
+}
+
+/* Horizontal Rule - Subtle */
+hr {
+  border: none;
+  border-top: var(--border-width-thin) solid var(--color-border);
+  margin: var(--spacing-lg) 0;
+}
+
+/* Selection */
+::selection {
+  background-color: var(--color-accent);
+  color: var(--color-white);
+}
+
+::-moz-selection {
+  background-color: var(--color-accent);
+  color: var(--color-white);
+}
+
+/* Placeholder Text */
+::placeholder {
+  color: var(--color-text-tertiary);
+  opacity: 1;
+}
+
+::-moz-placeholder {
+  color: var(--color-text-tertiary);
+  opacity: 1;
+}
+
+/* Scrollbar (WebKit browsers) */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-background);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-border);
+  border-radius: var(--radius-md);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-text-tertiary);
+}

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Job Notification Tracker - KodNest Premium Build System</title>
+  <link rel="stylesheet" href="design-system/main.css">
+  <link rel="stylesheet" href="design-system/navigation.css">
+  <link rel="stylesheet" href="design-system/pages.css">
+</head>
+<body>
+  <!-- Navigation Bar -->
+  <nav class="nav-bar">
+    <a href="/" class="nav-bar__brand" data-route="/">Job Notification Tracker</a>
+    
+    <button class="nav-bar__toggle" id="nav-toggle" aria-label="Toggle navigation">
+      <span class="nav-bar__toggle-line"></span>
+      <span class="nav-bar__toggle-line"></span>
+      <span class="nav-bar__toggle-line"></span>
+    </button>
+
+    <ul class="nav-bar__links" id="nav-links">
+      <li>
+        <a href="/jobnotify/dashboard" class="nav-bar__link" data-route="/dashboard">Dashboard</a>
+      </li>
+      <li>
+        <a href="/jobnotify/saved" class="nav-bar__link" data-route="/saved">Saved</a>
+      </li>
+      <li>
+        <a href="/jobnotify/digest" class="nav-bar__link" data-route="/digest">Digest</a>
+      </li>
+      <li>
+        <a href="/jobnotify/settings" class="nav-bar__link" data-route="/settings">Settings</a>
+      </li>
+      <li>
+        <a href="/jobnotify/jt/proof" class="nav-bar__link" data-route="/jt/proof">Proof</a>
+      </li>
+      <li>
+        <a href="/jobnotify/jt/07-test" class="nav-bar__link" data-route="/jt/07-test">Test</a>
+      </li>
+    </ul>
+  </nav>
+
+  <!-- Page Content Container -->
+  <main id="page-content">
+    <!-- Content will be rendered here by router -->
+  </main>
+
+  <script src="data/jobs.js"></script>
+  <script src="js/preferencesManager.js"></script>
+  <script src="js/matchScorer.js"></script>
+  <script src="js/statusManager.js"></script>
+  <script src="js/testManager.js"></script>
+  <script src="js/proofManager.js"></script>
+  <script src="js/jobsManager.js"></script>
+  <script src="js/digestManager.js"></script>
+  <script src="js/router.js"></script>
+  <script>
+    // Hamburger menu toggle
+    document.addEventListener('DOMContentLoaded', () => {
+      const toggle = document.getElementById('nav-toggle');
+      const links = document.getElementById('nav-links');
+
+      if (toggle && links) {
+        toggle.addEventListener('click', () => {
+          toggle.classList.toggle('nav-bar__toggle--open');
+          links.classList.toggle('nav-bar__links--open');
+        });
+
+        // Close menu when clicking a link on mobile
+        links.querySelectorAll('.nav-bar__link').forEach(link => {
+          link.addEventListener('click', () => {
+            if (window.innerWidth <= 768) {
+              toggle.classList.remove('nav-bar__toggle--open');
+              links.classList.remove('nav-bar__links--open');
+            }
+          });
+        });
+      }
+    });
+  </script>
+</body>
+</html>

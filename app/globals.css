@@ -1,0 +1,80 @@
+﻿@import "tailwindcss";
+
+:root {
+  --background: #f3f6fb;
+  --foreground: #111827;
+  --surface: #ffffff;
+  --sidebar: #0f172a;
+  --sidebar-foreground: #e2e8f0;
+  --accent: #0ea5e9;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-geist-sans), "Segoe UI", sans-serif;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.app-container {
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  padding: 0.6rem 1.1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.15s ease-in-out;
+  border: 1px solid transparent;
+}
+
+.btn-primary {
+  background-color: #6d28d9;
+  color: #fff;
+  border-color: #6d28d9;
+}
+
+.btn-primary:hover {
+  background-color: #5b21b6;
+  border-color: #5b21b6;
+}
+
+.btn-secondary {
+  background-color: #fff;
+  color: #182132;
+  border-color: #e5e7eb;
+}
+
+.btn-secondary:hover {
+  background-color: #f8fafc;
+}
+
+.hero-gradient {
+  background: linear-gradient(135deg, #6d28d9 0%, #5b21b6 50%, #7c3aed 100%);
+}
