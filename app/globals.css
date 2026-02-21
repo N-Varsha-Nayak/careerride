@@ -1,14 +1,39 @@
 ﻿@import "tailwindcss";
 
+/* =========================================
+   🎨 Premium Color System (NEW)
+   Indigo + Slate + Soft Neutral
+========================================= */
 :root {
-  --background: #f3f6fb;
-  --foreground: #111827;
+  /* Backgrounds */
+  --background: #f8fafc;
   --surface: #ffffff;
-  --sidebar: #0f172a;
+  --surface-muted: #f1f5f9;
+
+  /* Text colors */
+  --foreground: #0f172a;
+  --heading: #020617;
+  --subtext: #475569;
+  --muted-text: #64748b;
+
+  /* Sidebar */
+  --sidebar: #020617;
   --sidebar-foreground: #e2e8f0;
-  --accent: #0ea5e9;
+
+  /* Accent (Primary Brand) */
+  --accent: #4f46e5;
+  --accent-hover: #4338ca;
+
+  /* Borders & effects */
+  --border: #e2e8f0;
+  --ring: rgba(79, 70, 229, 0.25);
+
+  /* Shadows */
+  --shadow-soft: 0 2px 10px rgba(15, 23, 42, 0.06);
+  --shadow-medium: 0 12px 32px rgba(15, 23, 42, 0.08);
 }
 
+/* Tailwind theme mapping */
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
@@ -16,65 +41,168 @@
   --font-mono: var(--font-geist-mono);
 }
 
+/* =========================================
+   Global Reset
+========================================= */
 * {
   box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {
   margin: 0;
   background: var(--background);
   color: var(--foreground);
-  font-family: var(--font-geist-sans), "Segoe UI", sans-serif;
+  font-family: var(--font-geist-sans), system-ui, "Segoe UI", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
 }
 
+/* Links */
 a {
   color: inherit;
   text-decoration: none;
+  transition: color 0.15s ease;
 }
 
+a:hover {
+  color: var(--accent);
+}
+
+/* =========================================
+   Layout Container
+========================================= */
 .app-container {
   max-width: 1200px;
-  margin-left: auto;
-  margin-right: auto;
-  padding-left: 1.5rem;
-  padding-right: 1.5rem;
+  margin-inline: auto;
+  padding-inline: 1.5rem;
 }
 
+/* =========================================
+   Hero Section Typography
+========================================= */
+.hero-eyebrow {
+  color: var(--muted-text);
+  font-size: 0.8rem;
+  letter-spacing: 0.18em;
+  font-weight: 600;
+}
+
+.hero-title {
+  color: var(--heading);
+  font-weight: 750;
+  letter-spacing: -0.025em;
+  line-height: 1.15;
+}
+
+.hero-subtitle {
+  color: var(--subtext);
+  font-size: 1.05rem;
+  line-height: 1.6;
+}
+
+/* =========================================
+   Premium Button System
+========================================= */
 .btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
-  font-size: 0.875rem;
-  font-weight: 500;
-  padding: 0.6rem 1.1rem;
-  border-radius: 8px;
+
+  font-size: 0.9rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+
+  padding: 0.7rem 1.4rem;
+  border-radius: 12px;
+
   cursor: pointer;
-  transition: all 0.15s ease-in-out;
   border: 1px solid transparent;
+
+  transition:
+    transform 0.12s ease,
+    box-shadow 0.18s ease,
+    background-color 0.18s ease;
 }
 
+.btn:hover {
+  transform: translateY(-1px);
+}
+
+.btn:active {
+  transform: translateY(0);
+}
+
+/* Primary Button */
 .btn-primary {
-  background-color: #6d28d9;
-  color: #fff;
-  border-color: #6d28d9;
+  background: linear-gradient(135deg, #4f46e5, #6366f1);
+  color: #ffffff;
+  box-shadow: 0 12px 30px rgba(79, 70, 229, 0.28);
 }
 
 .btn-primary:hover {
-  background-color: #5b21b6;
-  border-color: #5b21b6;
+  background: linear-gradient(135deg, #4338ca, #4f46e5);
+  box-shadow: 0 16px 40px rgba(79, 70, 229, 0.38);
 }
 
+/* Secondary Button */
 .btn-secondary {
-  background-color: #fff;
-  color: #182132;
-  border-color: #e5e7eb;
+  background: var(--surface);
+  color: var(--foreground);
+  border-color: var(--border);
+  box-shadow: var(--shadow-soft);
 }
 
 .btn-secondary:hover {
-  background-color: #f8fafc;
+  background: var(--surface-muted);
+  border-color: #cbd5e1;
 }
 
+/* =========================================
+   Hero Gradient (Premium)
+========================================= */
 .hero-gradient {
-  background: linear-gradient(135deg, #6d28d9 0%, #5b21b6 50%, #7c3aed 100%);
+  background: linear-gradient(
+    135deg,
+    #4338ca 0%,
+    #4f46e5 40%,
+    #6366f1 100%
+  );
+  color: white;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-gradient::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    circle at 25% 30%,
+    rgba(255, 255, 255, 0.08),
+    transparent 60%
+  );
+  pointer-events: none;
+}
+
+/* =========================================
+   Card Surface (Premium)
+========================================= */
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  box-shadow: var(--shadow-medium);
+}
+
+/* =========================================
+   Focus States
+========================================= */
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
 }
