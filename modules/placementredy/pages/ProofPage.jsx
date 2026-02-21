@@ -16,8 +16,10 @@ const STEPS = [
 
 const STORAGE_KEY = 'prp_final_submission';
 const STEPS_KEY = 'prp_steps_completed';
+const canUseStorage = typeof window !== 'undefined' && typeof window.localStorage !== 'undefined';
 
 export function getProofStatus() {
+  if (!canUseStorage) return { lovable: '', github: '', deployment: '' };
   const stored = localStorage.getItem(STORAGE_KEY);
   if (!stored) return { lovable: '', github: '', deployment: '' };
   try {
@@ -28,10 +30,12 @@ export function getProofStatus() {
 }
 
 export function setProofStatus(status) {
+  if (!canUseStorage) return;
   localStorage.setItem(STORAGE_KEY, JSON.stringify(status));
 }
 
 export function getStepsCompleted() {
+  if (!canUseStorage) return {};
   const stored = localStorage.getItem(STEPS_KEY);
   if (!stored) return {};
   try {
@@ -42,6 +46,7 @@ export function getStepsCompleted() {
 }
 
 export function setStepsCompleted(steps) {
+  if (!canUseStorage) return;
   localStorage.setItem(STEPS_KEY, JSON.stringify(steps));
 }
 

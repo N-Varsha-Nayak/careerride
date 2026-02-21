@@ -16,8 +16,10 @@ const TESTS = [
 ];
 
 const STORAGE_KEY = 'prp_test_checklist_v1';
+const canUseStorage = typeof window !== 'undefined' && typeof window.localStorage !== 'undefined';
 
 export function getTestChecklistStatus() {
+  if (!canUseStorage) return {};
   const stored = localStorage.getItem(STORAGE_KEY);
   if (!stored) return {};
   try {
@@ -28,6 +30,7 @@ export function getTestChecklistStatus() {
 }
 
 export function setTestChecklistStatus(status) {
+  if (!canUseStorage) return;
   localStorage.setItem(STORAGE_KEY, JSON.stringify(status));
 }
 
